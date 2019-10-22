@@ -9,7 +9,7 @@ import { CoreModule } from './core/core.module';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularMaterialModule } from './shared/shared-modules/angular-material/angular-material.module';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -22,8 +22,7 @@ import { AngularMaterialModule } from './shared/shared-modules/angular-material/
     PrivateModule,
     PublicModule,
     SharedModule,
-    RouterModule,
-    AngularMaterialModule
+    RouterModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
