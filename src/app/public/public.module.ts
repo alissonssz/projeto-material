@@ -5,6 +5,7 @@ import { PublicRoutingModule } from './public-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { AngularMaterialModule } from '../shared/shared-modules/angular-material/angular-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { SharedComponentsModule } from '../shared/shared-components/shared-components.module';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -12,7 +13,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     CommonModule,
     PublicRoutingModule,
     AngularMaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    SharedComponentsModule
   ],
   exports: [HomeComponent]
 })
