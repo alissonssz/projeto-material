@@ -4,9 +4,10 @@ import { MapsComponent } from './maps/maps.component';
 import { MapboxComponent } from './mapbox/mapbox.component';
 import { UploadArquivosComponent } from './upload-arquivos/upload-arquivos.component';
 import { AngularMaterialModule } from '../shared-modules/angular-material/angular-material.module';
+import { ValidadorCampoComponent } from './validador-campo/validador-campo.component';
 
 @NgModule({
-  declarations: [MapsComponent, MapboxComponent, UploadArquivosComponent],
+  declarations: [MapsComponent, MapboxComponent, UploadArquivosComponent, ValidadorCampoComponent],
   imports: [
     CommonModule,
     AngularMaterialModule
@@ -14,7 +15,8 @@ import { AngularMaterialModule } from '../shared-modules/angular-material/angula
   exports: [
     MapsComponent,
     MapboxComponent,
-    UploadArquivosComponent
+    UploadArquivosComponent,
+    ValidadorCampoComponent
   ]
 })
 export class SharedComponentsModule { }

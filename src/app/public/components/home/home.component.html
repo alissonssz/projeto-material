@@ -1,30 +1,60 @@
+<mat-accordion>
 
-    <mat-card>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Form 1
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <app-form1></app-form1>
+
+    </mat-expansion-panel>
+
+
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            Form 2
+        </mat-panel-title>
+
+      </mat-expansion-panel-header>
+      <app-form2></app-form2>
+    </mat-expansion-panel>
+
+  </mat-accordion>
+  <button mat-raised-button color="primary" (click)="salvarGeral()">Salvar</button>
+    
+    
+    
+    <!-- <mat-card>
         <mat-card-title>Titulo do Card</mat-card-title>
         <mat-card-subtitle>Subtitulo do Card</mat-card-subtitle>
         <mat-card-content>
-            <form action="">
-                <div fxLayout="row wrap">
-                    <mat-form-field id="inputNome" fxFlex.xs="100" fxFlex.sm="100"  fxFlex.md="80" fxFlex="70">
-                        <input matInput placeholder="Nome">
+            <form [formGroup]="formHome">
+                <div fxLayout="row wrap" fxLayoutGap="10px">
+                    <mat-form-field id="inputNome" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="70" fxFlex="70">
+                        <app-validador-campo>
+                            <input matInput placeholder="Nome" formControlName="nome" #inputNomeRef> 
+                        </app-validador-campo>
                     </mat-form-field>
                     <mat-form-field id="inputIdade" fxFlex.xs="100" fxFlex.sm="70" fxFlex.md="20" fxFlex="10">
-                        <input matInput placeholder="Idade">
-                    </mat-form-field>
-                    <mat-form-field id="inputIdade" fxFlex.xs="100" fxFlex.sm="70" fxFlex.md="20" fxFlex="10">
-                        <input matInput placeholder="Idade">
+                        <input matInput placeholder="Idade" formControlName="idade">
+                        <mat-error></mat-error>
                     </mat-form-field>
                 </div>
-                <div fxLayout="row wrap">
-                    <mat-form-field id="inputApelido" fxFlex.xs="100" fxFlex.sm="30" fxFlex.md="40" fxFlex="20">
-                        <input matInput placeholder="Apelido">
+                <div fxLayout="row wrap" fxLayoutGap="10px">
+                    <mat-form-field id="inputApelido" fxFlex.xs="50" fxFlex.sm="30" fxFlex.md="40" fxFlex="20">
+                        <input matInput placeholder="Apelido" formControlName="apelido">
+                    </mat-form-field>
+                    <mat-form-field id="inputEmail" fxFlex.xs="50" fxFlex.sm="50" fxFlex.md="50" fxFlex="30">
+                        <input matInput placeholder="Email" formControlName="email">
+                        <mat-error></mat-error>
                     </mat-form-field>
                 </div>
+                <button mat-raised-button color="primary">Enviar</button>
             </form>
         </mat-card-content>
-    </mat-card>
+    </mat-card> -->
 
-    <app-upload-arquivos></app-upload-arquivos>
-
-    <app-mapbox [lat]="-7.250263" [lng]="-35.871067"></app-mapbox>
 
