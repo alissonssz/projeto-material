@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { EventEmitterService } from 'src/app/public/services/event-emitter.service';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { GerenciarSalvarService } from 'src/app/public/services/gerenciar-salvar.service';
 
 @Component({
-  selector: 'app-form1',
-  templateUrl: './form1.component.html',
-  styleUrls: ['./form1.component.css']
+  selector: 'app-form3',
+  templateUrl: './form3.component.html',
+  styleUrls: ['./form3.component.css']
 })
-export class Form1Component implements OnInit {
+export class Form3Component implements OnInit {
+
   form: FormGroup;
-  constructor(
-    private formBuilder: FormBuilder, 
+  constructor(private formBuilder: FormBuilder, 
     private gerenciarSalvarService: GerenciarSalvarService) { }
 
   ngOnInit() {
@@ -22,7 +21,7 @@ export class Form1Component implements OnInit {
   observarSalvar() {
     this.gerenciarSalvarService.gerenciarSalvarGeral.subscribe(
       () => {
-        this.gerenciarSalvarService.gerenciarSalvarForm1.next({identificacao: 'form1', form: this.form.getRawValue()});
+        this.gerenciarSalvarService.gerenciarSalvarForm3.next({identificacao: 'form3', form: this.form.getRawValue()});
       }
     )
   }
@@ -31,8 +30,7 @@ export class Form1Component implements OnInit {
     this.form = this.formBuilder.group(
       {
         nome: [null, Validators.required],
-        idade: [null],
-        telefone: [null]
+        idade: [null]
       }
     );
   }

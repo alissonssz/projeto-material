@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { combineLatest, forkJoin } from 'rxjs';
+import { combineLatest, forkJoin, merge } from 'rxjs';
 import { GerenciarSalvarService } from '../../services/gerenciar-salvar.service';
-import { takeLast } from 'rxjs/operators';
+import { last } from 'rxjs/operators';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,6 +11,7 @@ import { takeLast } from 'rxjs/operators';
 export class HomeComponent implements OnInit, AfterViewInit {
   
   formHome: FormGroup;
+  mapCentral: Map<string, any>;
 
   constructor(private formBuilder: FormBuilder, private gerenciarSalvarService: GerenciarSalvarService) { }
 
@@ -24,28 +25,46 @@ export class HomeComponent implements OnInit, AfterViewInit {
       }
     );
     this.observarSalvar();
+    this.mapCentral = new Map<string, any>();
   }
 
   observarSalvar() {
-    combineLatest([
+    merge(
       this.gerenciarSalvarService.gerenciarSalvarForm1,
-      this.gerenciarSalvarService.gerenciarSalvarForm2
-    ]).pipe().
+      this.gerenciarSalvarService.gerenciarSalvarForm2,
+      this.gerenciarSalvarService.gerenciarSalvarForm3
+    ).pipe().
       subscribe(
-        (res) => {
-          console.log('res', res);
-          
+        (res: Form) => {
+          this.mapCentral.set(res.identificacao, res.form)
+          if (this.mapCentral.size === 3) {
+            this.salvar(this.mapCentral);
+          }
         }
       );
+  }
+
+  salvar(form: Map<string, any>) {
+    if (form.size === 3) {
+      console.log('realiza salvar', form);
+      console.log('form1', form.get('form1'));
+      console.log('form2', form.get('form2'));
+      console.log('form3', form.get('form3'));
+      // Realiza o salvar
+      this.mapCentral = null;
+    }
+    
   }
   
   ngAfterViewInit(): void {
 
   }
   
-
+ 
   salvarGeral() {
     this.gerenciarSalvarService.gerenciarSalvarGeral.next(true);
   }
 
 }
+
+type Form = {identificacao: string, form: any}

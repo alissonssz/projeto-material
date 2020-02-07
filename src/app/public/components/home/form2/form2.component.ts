@@ -22,10 +22,7 @@ export class Form2Component implements OnInit {
   observarSalvar() {
     this.gerenciarSalvarService.gerenciarSalvarGeral.subscribe(
       () => {
-        if (this.form.valid) {
-          this.gerenciarSalvarService.getGerenciar2().next(this.form.getRawValue());
-          //this.gerenciarSalvarService.getGerenciar2().complete();
-        }
+        this.gerenciarSalvarService.gerenciarSalvarForm1.next({identificacao: 'form2', form: this.form.getRawValue()});
       }
     )
   }

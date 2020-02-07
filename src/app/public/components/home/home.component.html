@@ -22,6 +22,17 @@
       <app-form2></app-form2>
     </mat-expansion-panel>
 
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            Form 3
+        </mat-panel-title>
+
+      </mat-expansion-panel-header>
+      <app-form3></app-form3>
+    </mat-expansion-panel>
+
   </mat-accordion>
   <button mat-raised-button color="primary" (click)="salvarGeral()">Salvar</button>
     

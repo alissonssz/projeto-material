@@ -1,34 +1,21 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable()
 export class GerenciarSalvarService {
   
-  gerenciarSalvarForm1: BehaviorSubject<any>;
-  gerenciarSalvarForm2: BehaviorSubject<any>;
-  gerenciarSalvarGeral: BehaviorSubject<any>;
+  gerenciarSalvarForm1: Subject<Form>;
+  gerenciarSalvarForm2: Subject<Form>;
+  gerenciarSalvarForm3: Subject<Form>;
+  gerenciarSalvarGeral: Subject<any>;
+
   constructor() { 
-    this.gerenciarSalvarForm1 = new BehaviorSubject<any>(null);
-    this.gerenciarSalvarForm2 = new BehaviorSubject<any>(null);
-    this.gerenciarSalvarGeral = new BehaviorSubject<any>(null);
+    this.gerenciarSalvarForm1 = new Subject<Form>();
+    this.gerenciarSalvarForm2 = new Subject<Form>();
+    this.gerenciarSalvarForm3 = new Subject<Form>();
+    this.gerenciarSalvarGeral = new Subject<any>();
   }
 
-  getGerenciar1() {
-    return this.gerenciarSalvarForm1;
-  }
-
-  getGerenciar2() {
-    return this.gerenciarSalvarForm2;
-  }
-
-
-  renovarInstancia1() {
-    this.gerenciarSalvarForm1 = null;
-    this.gerenciarSalvarForm1 = new BehaviorSubject<any>(null);
-  }
-
-  renovarInstancia2() {
-    this.gerenciarSalvarForm2 = null;
-    this.gerenciarSalvarForm2 = new BehaviorSubject<any>(null);
-  }
 }
+
+type Form = {identificacao: string, form: any}

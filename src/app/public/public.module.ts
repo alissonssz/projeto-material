@@ -12,9 +12,10 @@ import { Form1Component } from './components/home/form1/form1.component';
 import { Form2Component } from './components/home/form2/form2.component';
 import { EventEmitterService } from './services/event-emitter.service';
 import { GerenciarSalvarService } from './services/gerenciar-salvar.service';
+import { Form3Component } from './components/home/form3/form3.component';
 
 @NgModule({
-  declarations: [HomeComponent, Form1Component, Form2Component],
+  declarations: [HomeComponent, Form1Component, Form2Component, Form3Component],
   imports: [
     CommonModule,
     PublicRoutingModule,
